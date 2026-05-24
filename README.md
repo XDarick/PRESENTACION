@@ -1,5 +1,5 @@
 <div align="center">
-<img src="banner.jpg" width="100%" alt="Banner"/>
+<img src="https://i.pinimg.com/1200x/86/3a/44/863a446fbc44e624c04c78fc05b25e4c.jpg" width="100%" alt="Banner"/>
 </div>
 
 <div align="center">
@@ -85,7 +85,7 @@ const darick = {
 
 <div align="center">
 
-<img src="contact.gif" width="200px" align="right"/>
+<img src="https://i.pinimg.com/originals/80/9c/52/809c52bce47f98c54418cbc0d7a347e5.gif" width="200px" align="right"/>
 
 [![Gmail](https://img.shields.io/badge/darickvelasquez0@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:darickvelasquez0@gmail.com)
 
