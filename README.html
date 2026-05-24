@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darick Velasquez — GitHub Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+  }
+
+  .hero {
+    width: 100%;
+    max-height: 340px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: brightness(0.85);
+  }
+  .hero-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(to top, #0d1117 0%, transparent 100%);
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .identity {
+    margin-top: -2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .identity h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  .identity .tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: #2E8B57;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .typing-bar {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: #2E8B57;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .cursor { display: inline-block; animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .section { margin-bottom: 2rem; }
+  .section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #21262d;
+  }
+
+  .code-block {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    line-height: 1.8;
+    color: #c9d1d9;
+  }
+  .k { color: #ff7b72; }
+  .s { color: #a5d6ff; }
+  .v { color: #79c0ff; }
+  .c { color: #8b949e; }
+  .b { color: #2E8B57; }
+
+  .bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .bullets li {
+    font-size: 0.92rem;
+    color: #c9d1d9;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  .bullets li::before {
+    content: '▸';
+    color: #2E8B57;
+    position: absolute;
+    left: 0;
+  }
+
+  .tech-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 0.8rem; }
+  .tech-cat {
+    font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    margin-top: 12px;
+  }
+  .badge {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .badge img { height: 14px; width: auto; }
+
+  .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stats-row img { width: 100%; border-radius: 8px; }
+
+  .progress-block {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+  }
+  .progress-item { margin-bottom: 14px; }
+  .progress-item:last-child { margin-bottom: 0; }
+  .prog-label {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #8b949e;
+    margin-bottom: 6px;
+  }
+  .prog-bar-bg {
+    height: 6px;
+    background: #21262d;
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .prog-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: #2E8B57;
+    transition: width 1s ease;
+  }
+
+  blockquote {
+    border-left: 3px solid #2E8B57;
+    padding: 0.6rem 1rem;
+    color: #8b949e;
+    font-style: italic;
+    font-size: 0.88rem;
+    background: #161b22;
+    border-radius: 0 8px 8px 0;
+    margin-top: 1rem;
+  }
+
+  /* CONTACTAME ROW */
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .contact-gif {
+    flex-shrink: 0;
+    width: 160px;
+    height: 160px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #21262d;
+  }
+  .contact-gif img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    transition: opacity 0.2s, transform 0.2s;
+    color: #fff;
+  }
+  .contact-btn:hover { opacity: 0.85; transform: translateX(3px); }
+  .contact-btn.gmail { background: #c0392b; }
+  .contact-btn.github { background: #21262d; border: 1px solid #30363d; }
+  .contact-btn.linkedin { background: #0a66c2; }
+  .contact-btn img { height: 18px; width: 18px; filter: invert(1); }
+
+  .footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #21262d;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #484f58;
+  }
+  .footer span { color: #2E8B57; }
+
+  .streak-img { width: 100%; border-radius: 8px; margin-top: 12px; }
+</style>
+</head>
+<body>
+
+<!-- HERO BANNER -->
+<div class="hero">
+  <img src="https://i.pinimg.com/1200x/86/3a/44/863a446fbc44e624c04c78fc05b25e4c.jpg" alt="Banner">
+  <div class="hero-overlay"></div>
+</div>
+
+<div class="container">
+
+  <!-- IDENTITY -->
+  <div class="identity">
+    <h1>Andres Darick Velasquez</h1>
+    <div class="tagline">// Full Stack Developer en construcción · Lima, Perú 🇵🇪</div>
+  </div>
+
+  <!-- TYPING BAR -->
+  <div class="typing-bar" id="typing">
+    <span id="typed-text"></span><span class="cursor">█</span>
+  </div>
+
+  <!-- SOBRE MI -->
+  <div class="section">
+    <div class="section-title">🚀 Sobre mí</div>
+    <div class="code-block">
+      <span class="k">const</span> <span class="v">darick</span> = {<br>
+      &nbsp;&nbsp;<span class="s">rol</span>:        <span class="b">"Full Stack Developer (en proceso)"</span>,<br>
+      &nbsp;&nbsp;<span class="s">ubicación</span>:  <span class="b">"Perú 🇵🇪"</span>,<br>
+      &nbsp;&nbsp;<span class="s">mentalidad</span>: <span class="b">"Aprendo haciendo, fallando y volviendo a intentar"</span>,<br>
+      &nbsp;&nbsp;<span class="s">meta</span>:       <span class="b">"Ser Full Stack Developer 🎯"</span>,<br>
+      &nbsp;&nbsp;<span class="s">uso_IA</span>:     <span class="k">true</span>, <span class="c">// como herramienta, no como muleta</span><br>
+      };
+    </div>
+    <ul class="bullets" style="margin-top:1rem;">
+      <li>Me apasiona la programación desde adentro, no solo por el trabajo</li>
+      <li>Uso <strong style="color:#2E8B57">IA</strong> como herramienta para acelerar mi aprendizaje</li>
+      <li>Soy directo, honesto y transparente en todo lo que hago</li>
+      <li>Creo que el mejor código es el que resuelve problemas reales</li>
+      <li>Cada día un poco mejor que ayer 📈</li>
+    </ul>
+  </div>
+
+  <!-- TECNOLOGIAS -->
+  <div class="section">
+    <div class="section-title">🧠 Tecnologías</div>
+    <div class="tech-cat">Frontend</div>
+    <div class="tech-grid">
+      <span class="badge" style="background:#E34F26;color:#fff;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="">HTML5</span>
+      <span class="badge" style="background:#1572B6;color:#fff;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="">CSS3</span>
+      <span class="badge" style="background:#F7DF1E;color:#000;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="">JavaScript</span>
+      <span class="badge" style="background:#20232A;color:#61DAFB;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="">React</span>
+    </div>
+    <div class="tech-cat">Backend</div>
+    <div class="tech-grid">
+      <span class="badge" style="background:#339933;color:#fff;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="">Node.js</span>
+      <span class="badge" style="background:#ED8B00;color:#fff;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="">Java</span>
+      <span class="badge" style="background:#3776AB;color:#fff;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
+    </div>
+    <div class="tech-cat">Herramientas</div>
+    <div class="tech-grid">
+      <span class="badge" style="background:#F05032;color:#fff;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="">Git</span>
+      <span class="badge" style="background:#181717;color:#fff;border:1px solid #30363d;">
+        <svg height="14" viewBox="0 0 16 16" fill="white"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </span>
+      <span class="badge" style="background:#007ACC;color:#fff;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="">VS Code</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="section">
+    <div class="section-title">📊 Estadísticas</div>
+    <div class="stats-row">
+      <img src="https://github-readme-stats.vercel.app/api?username=Dakoyzu&show_icons=true&theme=tokyonight&hide_border=true&locale=es" alt="GitHub Stats" onerror="this.style.opacity='0.3'">
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Dakoyzu&layout=compact&theme=tokyonight&hide_border=true" alt="Top Langs" onerror="this.style.opacity='0.3'">
+    </div>
+    <img class="streak-img" src="https://streak-stats.demolab.com?user=Dakoyzu&theme=tokyonight&hide_border=true&locale=es" alt="Streak" onerror="this.style.opacity='0.3'">
+  </div>
+
+  <!-- CAMINO -->
+  <div class="section">
+    <div class="section-title">🎯 Mi camino Full Stack</div>
+    <div class="progress-block">
+      <div class="progress-item">
+        <div class="prog-label"><span>Frontend — HTML · CSS · JS · React</span><span>80%</span></div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="prog-label"><span>Backend — Node.js · Java · Python</span><span>60%</span></div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:60%;background:#1a6e9e"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="prog-label"><span>DevOps — Git · GitHub · Docker</span><span>30%</span></div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:30%;background:#7c3aed"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="prog-label"><span>Base de Datos — SQL</span><span>40%</span></div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:40%;background:#d97706"></div></div>
+      </div>
+    </div>
+    <blockquote>"El mejor momento para empezar fue ayer. El segundo mejor momento es ahora."</blockquote>
+  </div>
+
+  <!-- CONTACTAME -->
+  <div class="section">
+    <div class="section-title">📬 Contáctame</div>
+    <div class="contact-row">
+      <div class="contact-gif">
+        <img src="https://i.pinimg.com/originals/80/9c/52/809c52bce47f98c54418cbc0d7a347e5.gif" alt="Contact animation">
+      </div>
+      <div class="contact-links">
+        <a class="contact-btn gmail" href="mailto:darickvelasquez0@gmail.com">
+          <svg height="18" viewBox="0 0 24 24" fill="white"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+          darickvelasquez0@gmail.com
+        </a>
+        <a class="contact-btn github" href="https://github.com/Dakoyzu" target="_blank">
+          <svg height="18" viewBox="0 0 16 16" fill="white"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          github.com/Dakoyzu
+        </a>
+        <a class="contact-btn linkedin" href="https://linkedin.com/in/andres-darick-velasquez-hernandez-60558a295" target="_blank">
+          <svg height="18" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>✨ <span>Código hoy, mejor mañana.</span> ✨</p>
+    <p style="margin-top:8px;">
+      <img src="https://komarev.com/ghpvc/?username=Dakoyzu&color=2E8B57&style=flat-square&label=Visitas+al+perfil" alt="Visitas">
+    </p>
+  </div>
+
+</div>
+
+<script>
+  const lines = [
+    "Apasionado por el código 💻",
+    "Full Stack Developer en proceso 🚀",
+    "Aprendo haciendo y fallando 🔥",
+    "Convirtiendo ideas en realidad ✨"
+  ];
+  let li = 0, ci = 0, deleting = false;
+  const el = document.getElementById('typed-text');
+  function type() {
+    const word = lines[li];
+    if (!deleting) {
+      el.textContent = word.slice(0, ++ci);
+      if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
+    } else {
+      el.textContent = word.slice(0, --ci);
+      if (ci === 0) { deleting = false; li = (li + 1) % lines.length; }
+    }
+    setTimeout(type, deleting ? 40 : 70);
+  }
+  type();
+</script>
+</body>
+</html>
